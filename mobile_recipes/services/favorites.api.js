@@ -1,0 +1,1 @@
+export const API_URL = "https://api-recipes-favorites.vercel.app/api/v2"
