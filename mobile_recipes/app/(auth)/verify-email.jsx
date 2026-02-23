@@ -3,6 +3,7 @@ import { useSignUp } from '@clerk/clerk-expo'
 import { useState } from 'react'
 import { authStyles } from '../../assets/styles/auth.styles.js'
 import { Image } from 'expo-image'
+import { COLORS } from "../../constants/colors.js"
 
 const VerifyEmailScreen = ({ email, onBack }) => {
   const { signUp, isLoaded, setActive } = useSignUp()
@@ -42,12 +43,12 @@ const VerifyEmailScreen = ({ email, onBack }) => {
         >
           <View style={authStyles.imageContainer}>
             <Image
-              source={require("../../assets/images/auth.png")}
+              source={require("../../assets/images/new_auth.png")}
               style={authStyles.image}
               contentFit='contain'
             />
           </View>
-          <Text style={authStyles.title}>Verify Your Email</Text>
+          <Text style={[authStyles.title, { marginTop: 20}]}>Verify Your Email</Text>
           <Text style={authStyles.subtitle}>We emailed you the code to {email}</Text>
           <View style={authStyles.formContainer}>
             <View style={authStyles.inputContainer}>

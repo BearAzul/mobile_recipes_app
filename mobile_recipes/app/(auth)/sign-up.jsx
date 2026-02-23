@@ -54,7 +54,7 @@ const SignUpScreen = () => {
       >
         <ScrollView contentContainerStyle={authStyles.scrollContent} showsVerticalScrollIndicator={false}>
           <View style={authStyles.imageContainer}>
-            <Image source={require("../../assets/images/register.png")} style={authStyles.image} contentFit='contain' />
+            <Image source={require("../../assets/images/new_register.png")} style={authStyles.image} contentFit='contain' />
           </View>
           <Text style={authStyles.title}>Create an Account</Text>
           <Text style={authStyles.subtitle}>Sign up to start collect your recipe collection</Text>
