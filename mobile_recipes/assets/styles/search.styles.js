@@ -16,7 +16,7 @@ export const searchStyles = StyleSheet.create({
     backgroundColor: COLORS.card,
     borderRadius: 16,
     paddingHorizontal: 16,
-    paddingVertical: 12,
+    paddingVertical: 3,
     borderWidth: 1,
     borderColor: COLORS.border,
     shadowColor: COLORS.shadow,

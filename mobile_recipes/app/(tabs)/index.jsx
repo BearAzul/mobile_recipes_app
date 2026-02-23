@@ -1,4 +1,4 @@
-import { View, Text, ScrollView, TouchableOpacity, FlatList } from 'react-native'
+import { View, Text, ScrollView, TouchableOpacity, FlatList, RefreshControl } from 'react-native'
 import { COLORS } from "../../constants/colors.js";
 import { useRouter } from "expo-router"
 import { useState } from 'react';
@@ -9,6 +9,8 @@ import { Image } from 'expo-image';
 import { Ionicons } from "@expo/vector-icons"
 import CategoryFilter from '../../components/CategoryFilter.jsx';
 import RecipeCard from '../../components/RecipeCard.jsx';
+
+// const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms))
 
 const HomeScreen = () => {
   const router = useRouter()
@@ -68,6 +70,13 @@ const HomeScreen = () => {
     await fetchCategoryData(category)
   }
 
+  const onRefresh = async () => {
+    setRefreshing(true)
+    // await sleep(2000)
+    await fetchRecipes()
+    setRefreshing(false)
+  }
+
   useEffect(() => {
     fetchRecipes()
   }, [])
@@ -77,6 +86,13 @@ const HomeScreen = () => {
       <ScrollView
         contentContainerStyle={homeStyles.scrollContent}
         showsVerticalScrollIndicator={false}
+        refreshControl={
+          <RefreshControl
+            refreshing={refreshing}
+            onRefresh={onRefresh}
+            tintColor={COLORS.primary}
+          />
+        }
       >
         {featuredRecipe && (
           <View style={[homeStyles.featuredSection, { marginTop: 30 }]}>
@@ -140,23 +156,22 @@ const HomeScreen = () => {
             <Text style={homeStyles.sectionTitle}>{selectedCategory || "All Recipes"}</Text>
           </View>
 
-          {recipes.length > 0 ? (
-            <FlatList
-              data={recipes}
-              renderItem={({ item }) => <RecipeCard recipe={item} />}
-              keyExtractor={(item) => item.id.toString()}
-              numColumns={2}
-              columnWrapperStyle={homeStyles.row}
-              contentContainerStyle={homeStyles.recipesGrid}
-              scrollEnabled={false}
-            />
-          ) : (
-            <View style={homeStyles.emptyState}>
-              <Ionicons name='cloud-offline-outline' size={48} color={COLORS.textLight} />
-              <Text style={homeStyles.emptyTitle}>No recipes available</Text>
-              <Text style={homeStyles.emptyDescription}>Try selecting a different category or refresh the page.</Text>
-            </View>
-          )}
+          <FlatList
+            data={recipes}
+            renderItem={({ item }) => <RecipeCard recipe={item} />}
+            keyExtractor={(item) => item.id.toString()}
+            numColumns={2}
+            columnWrapperStyle={homeStyles.row}
+            contentContainerStyle={homeStyles.recipesGrid}
+            scrollEnabled={false}
+            ListEmptyComponent={
+              <View style={homeStyles.emptyState}>
+                <Ionicons name='cloud-offline-outline' size={48} color={COLORS.textLight} />
+                <Text style={homeStyles.emptyTitle}>No recipes available</Text>
+                <Text style={homeStyles.emptyDescription}>Try selecting a different category or refresh the page.</Text>
+              </View>
+            }
+          />
         </View>
       </ScrollView>
     </View>
