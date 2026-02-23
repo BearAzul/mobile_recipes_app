@@ -28,7 +28,7 @@ export const homeStyles = StyleSheet.create({
   },
   featuredSection: {
     paddingHorizontal: 20,
-    marginBottom: 24,
+    marginBottom: 10,
   },
   featuredCard: {
     borderRadius: 24,
@@ -97,8 +97,8 @@ export const homeStyles = StyleSheet.create({
     fontWeight: "600",
   },
   recipesSection: {
-    paddingHorizontal: 20,
-    marginTop: 8,
+    paddingHorizontal: 16,
+    marginTop: 6,
   },
   sectionHeader: {
     marginBottom: 16,
@@ -138,7 +138,7 @@ export const homeStyles = StyleSheet.create({
   },
   categoryFilterScrollContent: {
     paddingHorizontal: 16,
-    gap: 12,
+    gap: 10,
   },
   categoryButton: {
     flexDirection: "column",
@@ -229,6 +229,7 @@ export const recipeCardStyles = StyleSheet.create({
     lineHeight: 16,
   },
   footer: {
+    marginTop: "auto",
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
