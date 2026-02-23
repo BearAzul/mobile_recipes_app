@@ -9,7 +9,7 @@ const PORT = ENV.PORT || 5001
 
 const app = express()
 
-job.start()
+if (ENV.NODE_ENV === "production") job.start()
 
 app.use(express.json())
 app.use(cors())
