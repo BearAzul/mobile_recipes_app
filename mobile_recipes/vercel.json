@@ -3,7 +3,7 @@
   "outputDirectory": "dist",
   "devCommand": "expo",
   "cleanUrls": true,
-  "framework": "React Native",
+  "framework": null,
   "rewrites": [
     {
       "source": "/:path*",
