@@ -82,7 +82,7 @@ const HomeScreen = () => {
     fetchRecipes()
   }, [])
 
-  if(loading) return <LoadingSpinner message='Loading Home Screen...' />
+  if(loading && !refreshing) return <LoadingSpinner message='Loading Home Screen...' />
 
   return (
     <View style={homeStyles.container}>
