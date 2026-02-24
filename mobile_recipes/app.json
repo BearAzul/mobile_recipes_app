@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "mobile_recipes",
-    "slug": "recipes-mobile-app",
+    "slug": "mobile-recipes",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/logo.png",
@@ -52,7 +52,7 @@
     "extra": {
       "router": {},
       "eas": {
-        "projectId": "6eb4ab5c-97d9-4242-b0db-9a676ebfbe4c"
+        "projectId": "78a6ac88-92e2-4966-abaf-f3613928f70c"
       }
     },
     "owner": "akimdev77"
