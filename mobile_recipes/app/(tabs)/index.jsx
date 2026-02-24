@@ -9,6 +9,7 @@ import { Image } from 'expo-image';
 import { Ionicons } from "@expo/vector-icons"
 import CategoryFilter from '../../components/CategoryFilter.jsx';
 import RecipeCard from '../../components/RecipeCard.jsx';
+import LoadingSpinner from '../../components/LoadingSpinner.jsx';
 
 // const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms))
 
@@ -80,6 +81,8 @@ const HomeScreen = () => {
   useEffect(() => {
     fetchRecipes()
   }, [])
+
+  if(loading) return <LoadingSpinner message='Loading Home Screen...' />
 
   return (
     <View style={homeStyles.container}>
