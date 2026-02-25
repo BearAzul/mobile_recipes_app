@@ -8,10 +8,12 @@ import { searchStyles } from "../../assets/styles/search.styles.js"
 import { Ionicons } from "@expo/vector-icons"
 import { COLORS } from '../../constants/colors.js'
 import RecipeCard from '../../components/RecipeCard.jsx'
+import { useRouter } from "expo-router"
 
 const FavoritesScreen = () => {
   const { signOut } = useClerk()
   const { user } = useUser()
+  const router = useRouter()
 
   const [favorites, setFavorites] = useState()
   const [loading, setLoading] = useState()
@@ -79,7 +81,7 @@ const FavoritesScreen = () => {
                   Try to add the recipe as a favorite or check your internet connection.
                 </Text>
 
-                <TouchableOpacity style={favoritesStyles.exploreButton} onPress={() => router.push("/")}>
+                <TouchableOpacity style={favoritesStyles.exploreButton} onPress={() => router.push("/search")}>
                   <Ionicons name='search' size={18} color={COLORS.white} />
                   <Text style={favoritesStyles.exploreButtonText}>Explore Recipes</Text>
                 </TouchableOpacity>
